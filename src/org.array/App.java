@@ -1,7 +1,7 @@
-package exerciciosz;
 import java.util.Scanner;
 import java.util.Arrays;
-public class ForEach{
+
+public class OrgArray{
     public static void main(String[] args){
         Scanner entre = new Scanner(System.in);
         float[] numbers = null;
@@ -33,6 +33,13 @@ public class ForEach{
         }
         entre.close();
         Arrays.sort(numbers);
+
+        StringBuilder sb = new StringBuilder();
+
+        for(float f : numbers){
+            sb.append(f); sb.append(",");
+            System.out.println(sb);
+        }
         System.out.printf("Seus números são %s", Arrays.toString(numbers) );
     }
 }
