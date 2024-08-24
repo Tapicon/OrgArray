@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class OrgArray{
+public class App{
     public static void main(String[] args){
         Scanner entre = new Scanner(System.in);
         float[] numbers = null;
@@ -26,20 +26,29 @@ public class OrgArray{
                entre.nextLine();      //Descarta o valor inválido, limpa o buffer
             } 
         }
-        
-        for( int i=0; i<numbers.length; i++){
-            System.out.printf("Digite seu %d° número: ", i+1);
-            numbers[i] = entre.nextFloat();
+        while (true) {
+            try{ 
+                for ( int i=0; i<numbers.length; i++) {
+                    System.out.printf("Digite seu %d° número: ", i+1);
+                    numbers[i] = entre.nextFloat();
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Bota um numero que preste seu fudido!");
+                entre.nextLine();
+            }
         }
+        
         entre.close();
         Arrays.sort(numbers);
 
         StringBuilder sb = new StringBuilder();
-
+        
         for(float f : numbers){
-            sb.append(f); sb.append(",");
-            System.out.println(sb);
+            sb.append(", "); sb.append(f);
         }
-        System.out.printf("Seus números são %s", Arrays.toString(numbers) );
+        String retorno = sb.toString();
+        System.out.printf("Seus números são: %s\n", retorno.replaceFirst(", ", ""));
     }
 }
